@@ -1,4 +1,4 @@
-nano Dockerfile
+  UW PICO 5.09                    File: Dockerfile                    Modified  
 
 # Base image with Python 3.8
 FROM python:3.8-slim
@@ -18,3 +18,7 @@ EXPOSE 5000
 
 # Run the application
 CMD ["python", "app.py"]
+
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
