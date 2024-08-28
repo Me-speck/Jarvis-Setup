@@ -1,6 +1,4 @@
-      File: Dockerfile                    Modified  
-
-# Base image with Python 3.8
+  # Base image with Python 3.8
 FROM python:3.8-slim
 
 # Set working directory
@@ -18,4 +16,3 @@ EXPOSE 5000
 
 # Run the application
 CMD ["python", "app.py"]
-
