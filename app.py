@@ -1,1 +1,30 @@
+from flask import Flask, request, jsonify
+import openai
+
+app = Flask(__name__)
+
+# Initialize OpenAI with your API key
+openai.api_key = 'your-openai-api-key'
+
+@app.route('/')
+def home():
+    return "Jarvis is running!"
+
+@app.route('/command', methods=['POST'])
+def command():
+    data = request.json
+    user_input = data.get('command')
+    response = chatgpt_response(user_input)
+    return jsonify({"response": response})
+
+def chatgpt_response(prompt):
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Or "gpt-4" if available
+        prompt=prompt,
+        max_tokens=150
+    )
+    return response.choices[0].text.strip()
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
 
