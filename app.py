@@ -3,9 +3,9 @@ import openai
 
 app = Flask(__name__)
 
-# Initialize OpenAI with your API key
+# Initialize response with chat gpt 
  import os
-openai.api_key = os.getenv('OPENAI_API_KEY')
+
 
 
 @app.route('/')
