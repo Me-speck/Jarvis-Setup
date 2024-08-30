@@ -1,4 +1,3 @@
-nano app.py
 from flask import Flask, request, jsonify
 from transformers import pipeline
 
@@ -13,7 +12,7 @@ models = {
 
 @app.route('/')
 def home():
-    return "Hello, I am Jarvis, the AI voice assistant from Iron Man. How may I be of use today?"
+    return "Jarvis is here!"
 
 @app.route('/command', methods=['POST'])
 def command():
@@ -30,3 +29,4 @@ def generate_response(prompt, model_name):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+
