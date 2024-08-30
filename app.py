@@ -1,4 +1,5 @@
- from flask import Flask, request, jsonify
+nano app.py
+from flask import Flask, request, jsonify
 from transformers import pipeline
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ models = {
 
 @app.route('/')
 def home():
-    return "Hello, I am Jarvis, the ai voice asistant from iron man. how may I be of use today sir!"
+    return "Hello, I am Jarvis, the AI voice assistant from Iron Man. How may I be of use today?"
 
 @app.route('/command', methods=['POST'])
 def command():
