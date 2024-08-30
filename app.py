@@ -28,5 +28,5 @@ def chatgpt_response(prompt):
     return response.choices[0].text.strip()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)
 
