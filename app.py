@@ -1,3 +1,5 @@
+python3 app.py
+
 from flask import Flask, request, jsonify
 from transformers import pipeline
 
