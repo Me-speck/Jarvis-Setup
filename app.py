@@ -1,32 +1,31 @@
-from flask import Flask, request, jsonify
-import openai
+ from flask import Flask, request, jsonify
+from transformers import pipeline
 
 app = Flask(__name__)
 
-# Initialize response with chat gpt 
- import os
-
-
+# Load models using Hugging Face Transformers
+models = {
+    "gpt2": pipeline('text-generation', model='gpt2'),
+    "gpt-neo": pipeline('text-generation', model='EleutherAI/gpt-neo-2.7B'),
+    "gpt-j": pipeline('text-generation', model='EleutherAI/gpt-j-6B')
+}
 
 @app.route('/')
 def home():
-    return "hello I am Jarvis the voice ai asitant from iron man, how can I be of asistance?!"
+    return "Hello, I am Jarvis, the ai voice asistant from iron man. how may I be of use today sir!"
 
 @app.route('/command', methods=['POST'])
 def command():
     data = request.json
     user_input = data.get('command')
-    response = chatgpt_response(user_input)
+    model_name = data.get('model', 'gpt2')  # Default to GPT-2 if no model is specified
+    response = generate_response(user_input, model_name)
     return jsonify({"response": response})
 
-def chatgpt_response(prompt):
-    response = openai.Completion.create(
-        engine="text-davinci-003",  # Or "gpt-4" if available
-        prompt=prompt,
-        max_tokens=150
-    )
-    return response.choices[0].text.strip()
+def generate_response(prompt, model_name):
+    model = models.get(model_name, models["gpt2"])  # Default to GPT-2 if the model name is not found
+    results = model(prompt, max_length=150, num_return_sequences=1)
+    return results[0]['generated_text']
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
-
