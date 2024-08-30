@@ -10,7 +10,7 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 @app.route('/')
 def home():
-    return "Jarvis is running!"
+    return "hello I am Jarvis the voice ai asitant from iron man, how can I be of asistance?!"
 
 @app.route('/command', methods=['POST'])
 def command():
