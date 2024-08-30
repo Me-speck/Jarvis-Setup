@@ -16,3 +16,6 @@ EXPOSE 5000
 
 # Run the application
 CMD ["python", "app.py"]
+
+# assign api key to environment variable
+ENV OPENAI_API_KEY=your-openai-api-key
