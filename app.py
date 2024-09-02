@@ -17,20 +17,15 @@ def home():
 @app.route('/command', methods=['POST'])
 def command():
     data = request.json
-    print(f"Received command: {data}")  # Debugging statement
     user_input = data.get('command')
     model_name = data.get('model', 'gpt2')  # Default to GPT-2 if no model is specified
     response = generate_response(user_input, model_name)
-    print(f"Generated response: {response}")  # Debugging statement
     return jsonify({"response": response})
 
 def generate_response(prompt, model_name):
-    print(f"Generating response using model: {model_name}")  # Debugging statement
     model = models.get(model_name, models["gpt2"])  # Default to GPT-2 if the model name is not found
     results = model(prompt, max_length=150, num_return_sequences=1)
-    print(f"Model output: {results}")  # Debugging statement
     return results[0]['generated_text']
 
 if __name__ == '__main__':
-    print("Starting Jarvis...")  # Debugging statement
     app.run(host='0.0.0.0', port=5001)
