@@ -12,7 +12,7 @@ models = {
 
 @app.route('/')
 def home():
-    return "Jarvis here sir!"
+    return "Jarvis is here!"
 
 @app.route('/command', methods=['POST'])
 def command():
